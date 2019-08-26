@@ -25,9 +25,13 @@ class EquitySerializer(serializers.ModelSerializer, serializers.Serializer):
         data, meta_data = stock.get_batch_stock_quotes(symbols=Equity.objects.get(ticker='APC').ticker)
         now = data[0]
         return now['2. price']
-    
+   
+    current_value = serializers.SerializerMethodField('get_current_value')
+    def get_current_value(self, obj):
+
+        print(self.get_current_equity_market)
 
     class Meta:
         model = Equity
-        fields = ['title', 'ticker', 'shares','fx_rate','current_equity_market']
+        fields = ['title', 'ticker', 'shares','fx_rate','current_equity_market', 'current_value']
 
