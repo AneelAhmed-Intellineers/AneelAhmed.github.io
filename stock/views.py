@@ -1,3 +1,17 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404
+from .serializers import EquitySerializer
+from .models import Equity
 
-# Create your views here.
+
+
+from rest_framework import viewsets
+from rest_framework.response import Response
+
+
+
+class EquityView(viewsets.ModelViewSet):
+
+
+    serializer_class = EquitySerializer
+    queryset = Equity.objects.all()
+
