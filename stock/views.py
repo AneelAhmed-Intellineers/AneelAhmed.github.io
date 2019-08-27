@@ -14,4 +14,5 @@ class EquityView(viewsets.ModelViewSet):
 
     serializer_class = EquitySerializer
     queryset = Equity.objects.all()
-
+    
+    
